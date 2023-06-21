@@ -1,4 +1,4 @@
-pub struct General {
+pub struct GoToJail {
     name: String,
 }
 //TODO

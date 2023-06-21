@@ -1,13 +1,40 @@
 use std::hash::Hash;
+pub mod chance;
+pub mod community_chest;
+pub mod free_parking;
+pub mod general_field;
+pub mod go_to_jail;
+pub mod jail_visiting;
+pub mod rail_road;
+pub mod start;
+pub mod street;
+pub mod tax;
+pub mod utility;
 
-mod buyable_field;
-mod general_field;
+use chance::Chance;
+use community_chest::CommunityChest;
+use free_parking::FreeParking;
+use general_field::General;
+use go_to_jail::GoToJail;
+use jail_visiting::JailVisiting;
+use rail_road::RailRoad;
+use start::Start;
+use street::Street;
+use tax::Tax;
+use utility::Utility;
 
-use buyable_field::BuyableField;
-use general_field::GeneralField;
 pub enum Field {
-    General(GeneralField),
-    Buyable(BuyableField),
+    Chance(Chance),
+    CommunityChest(CommunityChest),
+    FreeParking(FreeParking),
+    General(General),
+    GoToJail(GoToJail),
+    JailVisiting(JailVisiting),
+    RailRoad(RailRoad),
+    Start(Start),
+    Street(Street),
+    Tax(Tax),
+    Utility(Utility),
 }
 
 impl Eq for Field {}

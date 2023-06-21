@@ -10,7 +10,7 @@ pub enum Color {
     Green,
     DarkBlue,
     TrainStation,
-    UtilityStation,
+    Utility,
 }
 
 impl Eq for Color {}
