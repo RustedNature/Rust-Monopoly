@@ -1,6 +1,9 @@
-use crate::modules::{bank::Bank, player::Player};
+use crate::modules::{bank::Bank, color::Color, player::Player};
 
-use super::field::{general_field::General, street::Street, Field};
+use super::{
+    constants,
+    field::{board_fields::create_fields, Field},
+};
 struct Board {
     bank: Bank,
     players: Vec<Player>,
@@ -12,7 +15,7 @@ impl Board {
         Board {
             bank: Bank::new(),
             players: Vec::new(),
-            fields: vec![],
+            fields: create_fields(),
         }
     }
 }
