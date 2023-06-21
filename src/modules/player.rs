@@ -1,6 +1,7 @@
 use rand::Rng;
 
-use crate::modules::{buyable_field::BuyableField, color::Color, constants::constants::*};
+use crate::modules::field::*;
+use crate::modules::{color::Color, constants::constants::*};
 use std::collections::HashMap;
 pub struct Player {
     name: String,
@@ -10,7 +11,7 @@ pub struct Player {
     current_dice_roll: u32,
     rounds_in_jail: u32,
     current_position: u32,
-    owned_streets: HashMap<Color, Vec<BuyableField>>,
+    owned_streets: HashMap<Color, Vec<Field>>,
 }
 
 impl Player {
