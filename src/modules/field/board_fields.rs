@@ -21,6 +21,7 @@ pub fn create_fields() -> Vec<Field> {
             90,
             160,
             250,
+            50,
         )),
         Field::CommunityChest(CommunityChest::new()),
         Field::Street(Street::new(
@@ -33,6 +34,7 @@ pub fn create_fields() -> Vec<Field> {
             180,
             320,
             450,
+            50,
         )),
         Field::Tax(Tax::new(String::from("Einkommenssteuer"), 200)),
         Field::RailRoad(RailRoad::new(String::from("Südbahnhof"))),
@@ -46,6 +48,7 @@ pub fn create_fields() -> Vec<Field> {
             270,
             400,
             550,
+            50,
         )),
         Field::Chance(Chance::new()),
         Field::Street(Street::new(
@@ -58,6 +61,7 @@ pub fn create_fields() -> Vec<Field> {
             270,
             400,
             550,
+            50,
         )),
         Field::Street(Street::new(
             "Poststraße".to_string(),
@@ -69,6 +73,7 @@ pub fn create_fields() -> Vec<Field> {
             300,
             450,
             600,
+            50,
         )),
         Field::JailVisiting(JailVisiting {}),
         Field::Street(Street::new(
@@ -81,6 +86,7 @@ pub fn create_fields() -> Vec<Field> {
             450,
             625,
             750,
+            100,
         )),
         Field::Utility(Utility::new("Elektrizitätswerk".to_string())),
         Field::Street(Street::new(
@@ -93,6 +99,7 @@ pub fn create_fields() -> Vec<Field> {
             450,
             625,
             750,
+            100,
         )),
         Field::Street(Street::new(
             "Neue Straße".to_string(),
@@ -104,6 +111,7 @@ pub fn create_fields() -> Vec<Field> {
             500,
             700,
             900,
+            100,
         )),
         Field::RailRoad(RailRoad::new("Westbanhof".to_string())),
         Field::Street(Street::new(
@@ -116,6 +124,7 @@ pub fn create_fields() -> Vec<Field> {
             550,
             750,
             950,
+            100,
         )),
         Field::CommunityChest(CommunityChest {}),
         Field::Street(Street::new(
@@ -128,6 +137,7 @@ pub fn create_fields() -> Vec<Field> {
             550,
             750,
             950,
+            100,
         )),
         Field::Street(Street::new(
             "Berliner Straße".to_string(),
@@ -139,6 +149,7 @@ pub fn create_fields() -> Vec<Field> {
             600,
             800,
             1000,
+            100,
         )),
         Field::FreeParking(FreeParking::new()),
         Field::Street(Street::new(
@@ -151,6 +162,7 @@ pub fn create_fields() -> Vec<Field> {
             700,
             875,
             1050,
+            150,
         )),
         Field::Chance(Chance::new()),
         Field::Street(Street::new(
@@ -163,6 +175,7 @@ pub fn create_fields() -> Vec<Field> {
             700,
             875,
             1050,
+            150,
         )),
         Field::Street(Street::new(
             "Opernplatz".to_string(),
@@ -174,6 +187,7 @@ pub fn create_fields() -> Vec<Field> {
             750,
             925,
             1100,
+            150,
         )),
         Field::RailRoad(RailRoad::new("Nordbahnhof".to_string())),
         Field::Street(Street::new(
@@ -186,6 +200,7 @@ pub fn create_fields() -> Vec<Field> {
             800,
             975,
             1150,
+            150,
         )),
         Field::Street(Street::new(
             "Schillerstraße".to_string(),
@@ -197,6 +212,7 @@ pub fn create_fields() -> Vec<Field> {
             800,
             975,
             1150,
+            150,
         )),
         Field::Utility(Utility::new("Wasserwerk".to_string())),
         Field::Street(Street::new(
@@ -209,6 +225,7 @@ pub fn create_fields() -> Vec<Field> {
             850,
             1025,
             1200,
+            150,
         )),
         Field::GoToJail(GoToJail::new()),
         Field::Street(Street::new(
@@ -221,6 +238,7 @@ pub fn create_fields() -> Vec<Field> {
             900,
             1100,
             1275,
+            200,
         )),
         Field::Street(Street::new(
             "Hauptstraße".to_string(),
@@ -232,6 +250,7 @@ pub fn create_fields() -> Vec<Field> {
             900,
             1100,
             1275,
+            200,
         )),
         Field::CommunityChest(CommunityChest::new()),
         Field::Street(Street::new(
@@ -244,6 +263,7 @@ pub fn create_fields() -> Vec<Field> {
             1000,
             1200,
             1400,
+            200,
         )),
         Field::RailRoad(RailRoad::new("Hauptbahnhof".to_string())),
         Field::Chance(Chance::new()),
@@ -257,6 +277,7 @@ pub fn create_fields() -> Vec<Field> {
             1100,
             1300,
             1500,
+            200,
         )),
         Field::Tax(Tax::new("Luxussteuer".to_string(), 100)),
         Field::Street(Street::new(
@@ -269,6 +290,7 @@ pub fn create_fields() -> Vec<Field> {
             1400,
             1700,
             2000,
+            200,
         )),
     ];
 }
