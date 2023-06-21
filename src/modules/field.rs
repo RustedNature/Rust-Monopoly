@@ -1,4 +1,5 @@
 use std::hash::Hash;
+pub mod board_fields;
 pub mod chance;
 pub mod community_chest;
 pub mod free_parking;
