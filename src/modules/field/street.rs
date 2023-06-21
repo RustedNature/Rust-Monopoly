@@ -1,5 +1,5 @@
 use crate::modules::{color::Color, player::Player};
-pub struct BuyableField {
+pub struct Street {
     name: String,
     has_owner: bool,
     buy_price: u32,
@@ -10,7 +10,7 @@ pub struct BuyableField {
     color: Color,
 }
 
-impl BuyableField {
+impl Street {
     pub fn new(
         name: String,
         buy_price: u32,
@@ -21,7 +21,7 @@ impl BuyableField {
         rental_price_three_houses: u32,
         rental_price_four_houses: u32,
         rental_price_hotel: u32,
-    ) -> BuyableField {
+    ) -> Street {
         let rental_priceses: Vec<u32> = vec![
             rental_price_zero_houses,
             rental_price_one_house,
@@ -31,7 +31,7 @@ impl BuyableField {
             rental_price_hotel,
         ];
 
-        BuyableField {
+        Street {
             name,
             buy_price,
             color,
