@@ -1,8 +1,12 @@
-pub struct Chance {}
+pub struct Chance {
+    name: String,
+}
 
 impl Chance {
     pub fn new() -> Chance {
-        todo!()
+        Chance {
+            name: "Ereignisfeld".to_string(),
+        }
     }
 }
 //TODO
