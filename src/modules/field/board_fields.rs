@@ -126,7 +126,7 @@ pub fn create_fields() -> Vec<Field> {
             950,
             100,
         )),
-        Field::CommunityChest(CommunityChest {}),
+        Field::CommunityChest(CommunityChest::new()),
         Field::Street(Street::new(
             "Wiener Straße".to_string(),
             Color::Orange,
