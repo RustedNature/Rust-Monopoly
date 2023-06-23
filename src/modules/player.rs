@@ -2,7 +2,9 @@ use rand::Rng;
 
 use crate::modules::field::*;
 use crate::modules::{color::Color, constants::constants::*};
+use core::num;
 use std::collections::HashMap;
+#[derive(PartialEq, Eq, Clone)]
 pub struct Player {
     name: String,
     money: i32,
@@ -75,7 +77,11 @@ impl Player {
         self.is_in_jail = false;
     }
 
-    fn roll_the_dice(&mut self) {
+    pub fn move_fields(&mut self, num_of_fields: u32) {
+        self.current_position = (self.current_position + num_of_fields) % 39;
+    }
+
+    pub fn roll_the_dice(&mut self) {
         let mut rng = rand::thread_rng();
         let dice1: u32 = rng.gen_range(1..=6);
         let dice2: u32 = rng.gen_range(1..=6);
