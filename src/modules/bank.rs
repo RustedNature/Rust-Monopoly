@@ -1,4 +1,5 @@
 use crate::modules::{constants::constants::*, player::Player};
+#[derive(Clone, PartialEq, Eq)]
 pub struct Bank {
     money: i32,
     free_parking_money: i32,
