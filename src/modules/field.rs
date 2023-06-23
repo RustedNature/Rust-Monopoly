@@ -24,7 +24,7 @@ use start::Start;
 use street::Street;
 use tax::Tax;
 use utility::Utility;
-
+#[derive(Clone, PartialEq, Eq)]
 pub enum Field {
     Chance(Chance),
     CommunityChest(CommunityChest),
@@ -37,17 +37,4 @@ pub enum Field {
     Street(Street),
     Tax(Tax),
     Utility(Utility),
-}
-
-impl Eq for Field {}
-
-impl PartialEq for Field {
-    fn eq(&self, other: &Self) -> bool {
-        self == other
-    }
-}
-impl Hash for Field {
-    fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
-        std::mem::discriminant(self).hash(state);
-    }
 }
