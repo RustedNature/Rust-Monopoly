@@ -3,4 +3,7 @@ pub mod constants {
     pub const GO_FIELD: u32 = 0;
     pub const JAIL_FIELD: u32 = 10;
     pub const BANK_START_MONEY: i32 = 100_000;
+    pub const CNT_OF_FIELDS_ON_BOARD: u32 = 39;
+    pub const MIN_PLAYERS: u32 = 2;
+    pub const MAX_PLAYERS: u32 = 8;
 }
