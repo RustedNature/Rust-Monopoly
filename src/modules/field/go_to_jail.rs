@@ -1,3 +1,4 @@
+#[derive(Clone, PartialEq, Eq)]
 pub struct GoToJail {
     name: String,
 }

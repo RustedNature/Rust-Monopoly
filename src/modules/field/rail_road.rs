@@ -1,5 +1,5 @@
 use crate::modules::{color::Color, player::Player};
-
+#[derive(Clone, PartialEq, Eq)]
 pub struct RailRoad {
     name: String,
     buy_cost: i32,
