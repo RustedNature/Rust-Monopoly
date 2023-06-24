@@ -1,7 +1,7 @@
 use rand::Rng;
 
 use crate::modules::field::*;
-use crate::modules::{color::Color, constants::constants::*};
+use crate::modules::{color::Color, constants::constant::*};
 use core::num;
 use std::collections::HashMap;
 #[derive(PartialEq, Eq, Clone)]
@@ -13,6 +13,7 @@ pub struct Player {
     current_dice_roll: u32,
     rounds_in_jail: u32,
     current_position: u32,
+    last_position: u32,
     owned_streets: HashMap<Color, Vec<Field>>,
 }
 
@@ -26,12 +27,13 @@ impl Player {
             current_dice_roll: 0,
             rounds_in_jail: 0,
             current_position: GO_FIELD,
+            last_position: GO_FIELD,
             owned_streets: HashMap::new(),
         }
     }
 
-    pub fn get_name(&self) -> String {
-        self.name.clone()
+    pub fn get_name(&self) -> &str {
+        &self.name
     }
 
     pub fn get_money(&self) -> i32 {
@@ -42,10 +44,12 @@ impl Player {
         self.current_dice_roll
     }
 
-    pub fn get_current_postion(&self) -> u32 {
+    pub fn get_current_position(&self) -> u32 {
         self.current_position
     }
-
+    pub fn get_last_position(&self) -> u32 {
+        self.last_position
+    }
     pub fn get_number_of_owned_streets_of_specific_color(&self, color: Color) -> u32 {
         if let Some(owned_street_of_one_color) = self.owned_streets.get(&color) {
             owned_street_of_one_color.len() as u32
@@ -77,8 +81,9 @@ impl Player {
         self.is_in_jail = false;
     }
 
-    pub fn move_fields(&mut self, num_of_fields: u32) {
-        self.current_position = (self.current_position + num_of_fields) % 39;
+    pub fn move_fields_based_on_dice_roll(&mut self) {
+        self.last_position = self.current_position;
+        self.current_position = (self.current_position + self.current_dice_roll) % 39;
     }
 
     pub fn roll_the_dice(&mut self) {

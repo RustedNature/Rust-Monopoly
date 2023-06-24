@@ -8,6 +8,7 @@ pub mod general_field;
 pub mod go_to_jail;
 pub mod jail_visiting;
 pub mod rail_road;
+mod rental_priceses;
 pub mod start;
 pub mod street;
 pub mod tax;
@@ -37,4 +38,26 @@ pub enum Field {
     Street(Street),
     Tax(Tax),
     Utility(Utility),
+}
+
+pub trait FieldType {
+    fn get_name(&self) -> &str;
+}
+
+impl Field {
+    pub fn process_field(&self) -> &dyn FieldType {
+        match self {
+            Field::Chance(c) => c,
+            Field::CommunityChest(cc) => cc,
+            Field::FreeParking(fp) => fp,
+            Field::General(g) => g,
+            Field::GoToJail(gtj) => gtj,
+            Field::JailVisiting(jv) => jv,
+            Field::RailRoad(rr) => rr,
+            Field::Start(s) => s,
+            Field::Street(str) => str,
+            Field::Tax(t) => t,
+            Field::Utility(u) => u,
+        }
+    }
 }

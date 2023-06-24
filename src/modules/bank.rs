@@ -1,4 +1,4 @@
-use crate::modules::{constants::constants::*, player::Player};
+use crate::modules::{constants::constant::*, player::Player};
 #[derive(Clone, PartialEq, Eq)]
 pub struct Bank {
     money: i32,
@@ -26,5 +26,11 @@ impl Bank {
     pub fn pay_out_free_parking(&mut self, player: &mut Player) {
         player.receive_money(self.free_parking_money);
         self.free_parking_money = 0;
+    }
+}
+
+impl Default for Bank {
+    fn default() -> Self {
+        Self::new()
     }
 }
