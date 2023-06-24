@@ -1,4 +1,6 @@
 use crate::modules::{color::Color, player::Player};
+
+use super::FieldType;
 #[derive(Clone, PartialEq, Eq)]
 
 pub struct Tax {
@@ -11,4 +13,9 @@ impl Tax {
         Tax { name, tax_to_pay }
     }
     //TODO
+}
+impl FieldType for Tax {
+    fn get_name(&self) -> &str {
+        &self.name
+    }
 }

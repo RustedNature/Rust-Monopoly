@@ -1,4 +1,6 @@
 use crate::modules::{color::Color, player::Player};
+
+use super::{Field, FieldType};
 #[derive(Clone, PartialEq, Eq)]
 pub struct RailRoad {
     name: String,
@@ -21,4 +23,9 @@ impl RailRoad {
         }
     }
     //TODO
+}
+impl FieldType for RailRoad {
+    fn get_name(&self) -> &str {
+        &self.name
+    }
 }

@@ -1,4 +1,6 @@
 use crate::modules::{color::Color, player::Player};
+
+use super::FieldType;
 #[derive(Clone, PartialEq, Eq)]
 
 pub struct Utility {
@@ -20,4 +22,10 @@ impl Utility {
         }
     }
     //TODO
+}
+
+impl FieldType for Utility {
+    fn get_name(&self) -> &str {
+        &self.name
+    }
 }
