@@ -1,4 +1,9 @@
 use crate::modules::{color::Color, player::Player};
+
+use super::{
+    rental_priceses::{self, RentalList, RentalPriceFor},
+    FieldType,
+};
 #[derive(Clone, PartialEq, Eq)]
 pub struct Street {
     name: String,
@@ -7,7 +12,7 @@ pub struct Street {
     house_counter: u8,
     is_mortaged: bool,
     owner: Option<Player>,
-    rental_priceses: Vec<u32>,
+    rental_priceses: RentalList,
     price_per_house: u32,
     color: Color,
 }
@@ -17,23 +22,9 @@ impl Street {
         name: String,
         color: Color,
         buy_price: u32,
-        rental_price_zero_houses: u32,
-        rental_price_one_house: u32,
-        rental_price_two_houses: u32,
-        rental_price_three_houses: u32,
-        rental_price_four_houses: u32,
-        rental_price_hotel: u32,
         price_per_house: u32,
+        rental_priceses: RentalList,
     ) -> Street {
-        let rental_priceses: Vec<u32> = vec![
-            rental_price_zero_houses,
-            rental_price_one_house,
-            rental_price_two_houses,
-            rental_price_three_houses,
-            rental_price_four_houses,
-            rental_price_hotel,
-        ];
-
         Street {
             name,
             buy_price,
@@ -56,5 +47,13 @@ impl Street {
     pub fn change_owner(&mut self, new_owner: Player) {
         self.owner = Some(new_owner);
     }
+    pub fn get_rental_for(&self, houses: RentalPriceFor) -> u32 {
+        self.rental_priceses.get_rental_for(houses)
+    }
     //TODO
+}
+impl FieldType for Street {
+    fn get_name(&self) -> &str {
+        &self.name
+    }
 }
