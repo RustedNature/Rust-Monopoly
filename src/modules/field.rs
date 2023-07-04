@@ -1,4 +1,4 @@
-use std::hash::Hash;
+use std::{any::Any, hash::Hash};
 
 pub mod board_fields;
 pub mod chance;
@@ -25,39 +25,30 @@ use start::Start;
 use street::Street;
 use tax::Tax;
 use utility::Utility;
-#[derive(Clone, PartialEq, Eq)]
-pub enum Field {
-    Chance(Chance),
-    CommunityChest(CommunityChest),
-    FreeParking(FreeParking),
-    General(General),
-    GoToJail(GoToJail),
-    JailVisiting(JailVisiting),
-    RailRoad(RailRoad),
-    Start(Start),
-    Street(Street),
-    Tax(Tax),
-    Utility(Utility),
-}
 
-pub trait FieldType {
+pub trait Field {
     fn get_name(&self) -> &str;
 }
+#[derive(PartialEq, Eq, Hash, Clone)]
+pub enum Buyable {
+    Brown,
+    Pink,
+    LightBlue,
+    Orange,
+    Red,
+    Yellow,
+    Green,
+    DarkBlue,
+    TrainStation,
+    Utility,
+}
 
-impl Field {
-    pub fn process_field(&self) -> &dyn FieldType {
-        match self {
-            Field::Chance(c) => c,
-            Field::CommunityChest(cc) => cc,
-            Field::FreeParking(fp) => fp,
-            Field::General(g) => g,
-            Field::GoToJail(gtj) => gtj,
-            Field::JailVisiting(jv) => jv,
-            Field::RailRoad(rr) => rr,
-            Field::Start(s) => s,
-            Field::Street(str) => str,
-            Field::Tax(t) => t,
-            Field::Utility(u) => u,
-        }
-    }
+pub enum NonBuyable {
+    Go,
+    Tax,
+    JailVisiting,
+    CommunityChest,
+    Chance,
+    GoToJail,
+    FreeParking,
 }

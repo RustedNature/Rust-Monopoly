@@ -12,6 +12,7 @@ pub struct GameManager {
     players: Vec<Player>,
     bank: Bank,
     board: Board,
+    game_over: bool,
     round_cnt: u32,
     player_cnt: u32,
     cpu_player_cnt: u32,
@@ -28,6 +29,7 @@ impl GameManager {
             players: Vec::new(),
             bank: Bank::new(),
             board: Board::new(),
+            game_over: false,
             round_cnt: 0,
             player_cnt: 0,
             cpu_player_cnt: 0,
@@ -41,7 +43,7 @@ impl GameManager {
         self.all_player_initial_dice_roll();
         self.reorder_players_based_on_dice_roll();
         self.list_reordered_players();
-        //todo figurine
+        //TODO figurine
         self.start_game();
     }
 
@@ -55,7 +57,25 @@ impl GameManager {
                 io_manager::display_player_actions();
                 io_manager::write_console("Bitte wähle eine Aktion aus: ");
                 let mut next_action = io_manager::read_console();
-                self.evaluate_next_action(&next_action, p);
+                match next_action.as_str() {
+                    "1" => {
+                        io_manager::write_line_console(format!(
+                            "Spieler {} hat die Aktion würfeln ausgewählt",
+                            p.get_name()
+                        ));
+                        p.roll_the_dice();
+                        p.move_fields_based_on_dice_roll();
+                    }
+                    "2" => {} //TODO Handeln
+                    "3" => {} //TODO Haus kaufen
+                    "4" => {} //TODO Haus verkaufen
+                    "5" => {} //TODO Feld beleihen
+                    _ => {}   //TODO Wenn nichts passt
+                }
+
+                if self.game_over {
+                    break;
+                }
             }
         }
     }
@@ -167,31 +187,7 @@ impl GameManager {
         thread::sleep(Duration::from_secs(5));
     }
 
-    fn evaluate_next_action(&mut self, next_action: &str, player: &mut Player) {
-        match next_action {
-            "1" => {
-                io_manager::write_line_console(format!(
-                    "Spieler {} hat die Aktion würfeln ausgewählt",
-                    player.get_name()
-                ));
-                self.action_roll_dice_and_move(player);
-            }
-            "2" => {} //TODO Handeln
-            "3" => {} //TODO Haus kaufen
-            "4" => {} //TODO Haus verkaufen
-            "5" => {} //TODO Feld beleihen
-            _ => {}   //TODO Wenn nichts passt
-        }
-    }
+    fn evaluate_next_action(&mut self, next_action: &str, player: &mut Player) {}
 
-    fn action_roll_dice_and_move(&self, player: &mut Player) {
-        player.roll_the_dice();
-        player.move_fields_based_on_dice_roll();
-        io_manager::move_player_monolog(
-            player.get_name(),
-            player.get_current_dice_roll(),
-            self.board.get_name_of_field(player.get_last_position()),
-            self.board.get_name_of_field(player.get_current_position()),
-        );
-    }
+    fn action_roll_dice_and_move(&self, player: &mut Player) {}
 }

@@ -1,4 +1,4 @@
-use crate::modules::{color::Color, player::Player};
+use crate::modules::{field::Buyable, player::Player};
 
 use super::FieldType;
 #[derive(Clone, PartialEq, Eq)]
@@ -8,7 +8,7 @@ pub struct Utility {
     buy_cost: i32,
     has_owner: bool,
     owner: Option<Player>,
-    color: Color,
+    color: Buyable,
 }
 
 impl Utility {
@@ -18,7 +18,7 @@ impl Utility {
             buy_cost: 150,
             has_owner: false,
             owner: None,
-            color: Color::Utility,
+            color: Buyable::Utility,
         }
     }
     //TODO

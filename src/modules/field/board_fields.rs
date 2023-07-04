@@ -1,5 +1,5 @@
 use crate::modules::field::rental_priceses::RentalList;
-use crate::modules::{bank::Bank, color::Color, player::Player};
+use crate::modules::{bank::Bank, field::Buyable, player::Player};
 
 use crate::modules::{
     constants,
@@ -14,7 +14,7 @@ pub fn create_fields() -> Vec<Field> {
         Field::Start(Start::new()),
         Field::Street(Street::new(
             String::from("Badstraße"),
-            Color::Brown,
+            Buyable::Brown,
             60,
             50,
             RentalList::new(2, 10, 30, 90, 160, 250),
@@ -22,7 +22,7 @@ pub fn create_fields() -> Vec<Field> {
         Field::CommunityChest(CommunityChest::new()),
         Field::Street(Street::new(
             String::from("Turmstraße"),
-            Color::Brown,
+            Buyable::Brown,
             60,
             50,
             RentalList::new(4, 20, 60, 180, 320, 450),
@@ -31,7 +31,7 @@ pub fn create_fields() -> Vec<Field> {
         Field::RailRoad(RailRoad::new(String::from("Südbahnhof"))),
         Field::Street(Street::new(
             "Chausseestraße".to_string(),
-            Color::LightBlue,
+            Buyable::LightBlue,
             100,
             50,
             RentalList::new(6, 30, 90, 270, 400, 550),
@@ -39,22 +39,22 @@ pub fn create_fields() -> Vec<Field> {
         Field::Chance(Chance::new()),
         Field::Street(Street::new(
             "Elisenstraße".to_string(),
-            Color::LightBlue,
+            Buyable::LightBlue,
             100,
             50,
             RentalList::new(6, 30, 90, 270, 400, 550),
         )),
         Field::Street(Street::new(
             "Poststraße".to_string(),
-            Color::LightBlue,
+            Buyable::LightBlue,
             120,
             50,
             RentalList::new(8, 40, 100, 300, 450, 600),
         )),
-        Field::JailVisiting(JailVisiting::new(String::from("Zu besuch/Gefängnis"))),
+        Field::JailVisiting(JailVisiting::new(String::from("Zu Besuch/Gefängnis"))),
         Field::Street(Street::new(
             "Seestraße".to_string(),
-            Color::Pink,
+            Buyable::Pink,
             140,
             100,
             RentalList::new(10, 50, 150, 450, 625, 750),
@@ -62,14 +62,14 @@ pub fn create_fields() -> Vec<Field> {
         Field::Utility(Utility::new("Elektrizitätswerk".to_string())),
         Field::Street(Street::new(
             "Hafenstraße".to_string(),
-            Color::Pink,
+            Buyable::Pink,
             140,
             100,
             RentalList::new(10, 50, 150, 450, 625, 750),
         )),
         Field::Street(Street::new(
             "Neue Straße".to_string(),
-            Color::Pink,
+            Buyable::Pink,
             160,
             100,
             RentalList::new(12, 60, 180, 500, 700, 900),
@@ -77,7 +77,7 @@ pub fn create_fields() -> Vec<Field> {
         Field::RailRoad(RailRoad::new("Westbanhof".to_string())),
         Field::Street(Street::new(
             "Münchner Straße".to_string(),
-            Color::Orange,
+            Buyable::Orange,
             180,
             100,
             RentalList::new(14, 70, 200, 550, 750, 950),
@@ -85,14 +85,14 @@ pub fn create_fields() -> Vec<Field> {
         Field::CommunityChest(CommunityChest::new()),
         Field::Street(Street::new(
             "Wiener Straße".to_string(),
-            Color::Orange,
+            Buyable::Orange,
             180,
             100,
             RentalList::new(14, 70, 200, 550, 750, 950),
         )),
         Field::Street(Street::new(
             "Berliner Straße".to_string(),
-            Color::Orange,
+            Buyable::Orange,
             200,
             100,
             RentalList::new(16, 80, 220, 600, 800, 1000),
@@ -100,7 +100,7 @@ pub fn create_fields() -> Vec<Field> {
         Field::FreeParking(FreeParking::new()),
         Field::Street(Street::new(
             "Theaterstraße".to_string(),
-            Color::Red,
+            Buyable::Red,
             220,
             150,
             RentalList::new(18, 90, 250, 700, 875, 1050),
@@ -108,14 +108,14 @@ pub fn create_fields() -> Vec<Field> {
         Field::Chance(Chance::new()),
         Field::Street(Street::new(
             "Museumstraße".to_string(),
-            Color::Red,
+            Buyable::Red,
             220,
             150,
             RentalList::new(18, 90, 250, 700, 875, 1050),
         )),
         Field::Street(Street::new(
             "Opernplatz".to_string(),
-            Color::Red,
+            Buyable::Red,
             240,
             150,
             RentalList::new(20, 100, 300, 750, 925, 1100),
@@ -123,14 +123,14 @@ pub fn create_fields() -> Vec<Field> {
         Field::RailRoad(RailRoad::new("Nordbahnhof".to_string())),
         Field::Street(Street::new(
             "Lessingstraße".to_string(),
-            Color::Yellow,
+            Buyable::Yellow,
             260,
             150,
             RentalList::new(22, 110, 330, 800, 975, 1150),
         )),
         Field::Street(Street::new(
             "Schillerstraße".to_string(),
-            Color::Yellow,
+            Buyable::Yellow,
             260,
             150,
             RentalList::new(22, 110, 330, 800, 975, 1150),
@@ -138,7 +138,7 @@ pub fn create_fields() -> Vec<Field> {
         Field::Utility(Utility::new("Wasserwerk".to_string())),
         Field::Street(Street::new(
             "Goethestraße".to_string(),
-            Color::Yellow,
+            Buyable::Yellow,
             280,
             150,
             RentalList::new(24, 120, 360, 850, 1025, 1200),
@@ -146,14 +146,14 @@ pub fn create_fields() -> Vec<Field> {
         Field::GoToJail(GoToJail::new()),
         Field::Street(Street::new(
             "Rathausplatz".to_string(),
-            Color::Green,
+            Buyable::Green,
             300,
             200,
             RentalList::new(26, 130, 390, 900, 1100, 1275),
         )),
         Field::Street(Street::new(
             "Hauptstraße".to_string(),
-            Color::Green,
+            Buyable::Green,
             300,
             200,
             RentalList::new(26, 130, 390, 900, 1100, 1275),
@@ -161,7 +161,7 @@ pub fn create_fields() -> Vec<Field> {
         Field::CommunityChest(CommunityChest::new()),
         Field::Street(Street::new(
             "Bahnhofstraße".to_string(),
-            Color::Green,
+            Buyable::Green,
             320,
             200,
             RentalList::new(28, 150, 450, 1000, 1200, 1400),
@@ -170,7 +170,7 @@ pub fn create_fields() -> Vec<Field> {
         Field::Chance(Chance::new()),
         Field::Street(Street::new(
             "Parkstraße".to_string(),
-            Color::DarkBlue,
+            Buyable::DarkBlue,
             350,
             200,
             RentalList::new(35, 175, 500, 1100, 1300, 1500),
@@ -178,7 +178,7 @@ pub fn create_fields() -> Vec<Field> {
         Field::Tax(Tax::new("Luxussteuer".to_string(), 100)),
         Field::Street(Street::new(
             "Schlossallee".to_string(),
-            Color::DarkBlue,
+            Buyable::DarkBlue,
             400,
             200,
             RentalList::new(50, 200, 600, 1400, 1700, 2000),

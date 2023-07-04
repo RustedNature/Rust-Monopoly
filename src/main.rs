@@ -2,7 +2,6 @@
 pub mod modules {
     pub mod bank;
     pub mod board;
-    pub mod color;
     pub mod constants;
     pub mod field;
     pub mod game_manager;

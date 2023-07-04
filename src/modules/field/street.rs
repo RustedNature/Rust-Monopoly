@@ -1,4 +1,4 @@
-use crate::modules::{color::Color, player::Player};
+use crate::modules::{field::Buyable, player::Player};
 
 use super::{
     rental_priceses::{self, RentalList, RentalPriceFor},
@@ -14,13 +14,13 @@ pub struct Street {
     owner: Option<Player>,
     rental_priceses: RentalList,
     price_per_house: u32,
-    color: Color,
+    color: Buyable,
 }
 
 impl Street {
     pub fn new(
         name: String,
-        color: Color,
+        color: Buyable,
         buy_price: u32,
         price_per_house: u32,
         rental_priceses: RentalList,

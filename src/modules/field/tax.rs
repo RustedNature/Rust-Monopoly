@@ -1,4 +1,4 @@
-use crate::modules::{color::Color, player::Player};
+use crate::modules::{field::Buyable, player::Player};
 
 use super::FieldType;
 #[derive(Clone, PartialEq, Eq)]

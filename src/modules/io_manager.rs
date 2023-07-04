@@ -79,8 +79,7 @@ pub fn move_player_monolog(
 }
 
 pub fn write_header(player_name: &str) {
-    write_line_console(format!(
-        "Spieler {} ------------------------------------------------------",
-        player_name
-    ));
+    write_console("-".repeat(25));
+    write_console(format!("Spieler {}", player_name));
+    write_line_console("-".repeat(25));
 }

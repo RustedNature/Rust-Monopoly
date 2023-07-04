@@ -1,13 +1,12 @@
-use crate::modules::{color::Color, player::Player};
+use crate::modules::{field::Buyable, player::Player};
 
-use super::{Field, FieldType};
 #[derive(Clone, PartialEq, Eq)]
 pub struct RailRoad {
     name: String,
     buy_cost: i32,
     has_owner: bool,
     owner: Option<Player>,
-    color: Color,
+    color: Buyable,
     rent_of_one: i32,
 }
 
@@ -18,14 +17,9 @@ impl RailRoad {
             buy_cost: 200,
             has_owner: false,
             owner: None,
-            color: Color::TrainStation,
+            color: Buyable::TrainStation,
             rent_of_one: 25,
         }
     }
     //TODO
-}
-impl FieldType for RailRoad {
-    fn get_name(&self) -> &str {
-        &self.name
-    }
 }

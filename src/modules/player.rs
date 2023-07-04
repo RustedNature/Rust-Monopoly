@@ -1,7 +1,7 @@
 use rand::Rng;
 
 use crate::modules::field::*;
-use crate::modules::{color::Color, constants::constant::*};
+use crate::modules::{constants::constant::*, field::Buyable};
 use core::num;
 use std::collections::HashMap;
 #[derive(PartialEq, Eq, Clone)]
@@ -14,7 +14,7 @@ pub struct Player {
     rounds_in_jail: u32,
     current_position: u32,
     last_position: u32,
-    owned_streets: HashMap<Color, Vec<Field>>,
+    owned_streets: HashMap<Buyable, Vec<dyn Field>>,
 }
 
 impl Player {
@@ -50,7 +50,7 @@ impl Player {
     pub fn get_last_position(&self) -> u32 {
         self.last_position
     }
-    pub fn get_number_of_owned_streets_of_specific_color(&self, color: Color) -> u32 {
+    pub fn get_number_of_owned_streets_of_specific_color(&self, color: Buyable) -> u32 {
         if let Some(owned_street_of_one_color) = self.owned_streets.get(&color) {
             owned_street_of_one_color.len() as u32
         } else {
