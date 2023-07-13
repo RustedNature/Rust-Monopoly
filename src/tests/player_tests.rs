@@ -3,7 +3,7 @@ mod tests {
     use crate::modules::player::{self, Player};
     #[test]
     fn test_10_000_roll_the_dice() {
-        let mut player = Player::new("Test".to_string(), false);
+        let mut player = Player::new("Test".to_string(), player::PlayerType::HumanPlayer);
 
         for i in 0..=10_000 {
             player.roll_the_dice();
