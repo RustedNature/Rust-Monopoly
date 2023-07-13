@@ -2,6 +2,7 @@
 pub mod modules {
     pub mod bank;
     pub mod board;
+    pub mod color;
     pub mod constants;
     pub mod field;
     pub mod game_manager;
@@ -11,7 +12,7 @@ pub mod modules {
 
 use modules::game_manager::GameManager;
 
-use crate::modules::{field::board_fields, player::Player};
+use crate::modules::player::Player;
 fn main() {
     let mut gm = GameManager::new();
     gm.setup_game();
