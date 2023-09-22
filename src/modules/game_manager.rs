@@ -1,4 +1,4 @@
-use std::{fmt::format, io, thread, time::Duration};
+use std::{cell::RefCell, fmt::format, io, rc::Rc, thread, time::Duration};
 
 use super::{
     bank::Bank,
@@ -51,10 +51,12 @@ impl GameManager {
     fn start_game(&mut self) {
         loop {
             self.round_cnt += 1;
-            for mut player in &mut self.players {
-                self.process_player_turn(player);
-                if self.game_over {
-                    break;
+            for mut player in self.players.iter_mut() {
+                {
+                    self.process_player_turn(player);
+                    if self.game_over {
+                        break;
+                    }
                 }
             }
         }
@@ -131,7 +133,7 @@ impl GameManager {
         io_manager::write_line_console(format!(
             "Spieler {} muss dem Spieler {} {}€ zahlen!",
             player.get_name(),
-            owner.unwrap().get_name(),
+            owner.clone().unwrap().get_name(),
             property.get_rental_price(player).unwrap(),
         ));
         player.pay_money_to_player(

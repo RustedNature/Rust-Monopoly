@@ -18,7 +18,7 @@ impl Board {
             fields: create_fields(),
         }
     }
-    pub fn get_field_name(&self, field_index: u32) -> &str {
+    pub fn get_field_name(&self, field_index: u32) -> String {
         self.fields[field_index as usize].get_name()
     }
 

@@ -1,4 +1,7 @@
-use std::cell::{Ref, RefMut};
+use std::{
+    cell::{Ref, RefMut},
+    rc::Rc,
+};
 
 use super::{color::Color, player::Player};
 
@@ -57,18 +60,18 @@ const MAX_UTILITY_CNT: u32 = 2;
 const UTILITY_MULTIPLIER_ONE: u32 = 4;
 const UTILITY_MULTIPLIER_TWO: u32 = 10;
 impl FieldType {
-    pub fn get_name(&self) -> &str {
+    pub fn get_name(&self) -> String {
         match self {
-            FieldType::Go { name, .. } => name,
-            FieldType::Tax { name, .. } => name,
-            FieldType::Street { name, .. } => name,
-            FieldType::Railroad { name, .. } => name,
-            FieldType::CommunityChest { name } => name,
-            FieldType::Chance { name } => name,
-            FieldType::InJail { name } => name,
-            FieldType::Utility { name, .. } => name,
-            FieldType::FreeParking { name } => name,
-            FieldType::GoToJail { name } => name,
+            FieldType::Go { name, .. } => name.clone(),
+            FieldType::Tax { name, .. } => name.clone(),
+            FieldType::Street { name, .. } => name.clone(),
+            FieldType::Railroad { name, .. } => name.clone(),
+            FieldType::CommunityChest { name } => name.clone(),
+            FieldType::Chance { name } => name.clone(),
+            FieldType::InJail { name } => name.clone(),
+            FieldType::Utility { name, .. } => name.clone(),
+            FieldType::FreeParking { name } => name.clone(),
+            FieldType::GoToJail { name } => name.clone(),
         }
     }
 
@@ -86,7 +89,7 @@ impl FieldType {
             _ => None,
         }
     }
-    pub fn get_rental_price(&self, current_player: RefMut<Player>) -> Option<u32> {
+    pub fn get_rental_price(&self, current_player: &Player) -> Option<u32> {
         match self {
             FieldType::Street {
                 rental_prices,
